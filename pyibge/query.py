@@ -11,6 +11,7 @@ from collections import OrderedDict
 from lxml import html
 import requests
 
+
 class IBGEQuery:
     """ The class that represents a query.
     It receives the table ID and the parameters (available on the API documentation)."""
@@ -112,7 +113,7 @@ class IBGEQuery:
         url = self.build_URL()
         data = requests.get(url).json(object_pairs_hook=OrderedDict)
         self.variables = {}
-        header, content = data[0], data[1:]
+        header, content = data[0], data
         self.num_results = len(content)
 
         # Chew on the header and create a structure to hold the data we will parse next.
